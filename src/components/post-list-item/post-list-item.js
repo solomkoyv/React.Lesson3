@@ -3,8 +3,14 @@ import React from "react";
 import "./post-list-item.css";
 
 let today = new Date(),
-  date =
-    today.getDate() + "." + (today.getMonth() + 1) + "." + today.getFullYear();
+  d = today.getDate() < 10 ? `0${today.getDate()}` : today.getDate(),
+  m =
+    today.getMonth() + 1 < 10
+      ? `0${today.getMonth() + 1}`
+      : today.getMonth() + 1,
+  y = today.getFullYear(),
+  date = `${d}.${m}.${y}`;
+// today.getDate() + "." + (today.getMonth() + 1) + "." + today.getFullYear();
 
 const PostListItem = () => {
   return (
