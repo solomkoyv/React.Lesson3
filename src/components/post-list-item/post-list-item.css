@@ -52,9 +52,3 @@
 .app-list-item.important .btn-star {
   color: #aeaeae;
 }
-
-.now_date {
-  font-size: 0.7rem;
-  align-self: flex-end;
-  margin-right: 1rem;
-}
