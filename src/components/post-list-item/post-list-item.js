@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import "./post-list-item.css";
 
-import date from "../post-list-item-date";
+import Date from "../post-list-item-date";
 
 export default class PostListItem extends Component {
   state = { important: false, like: false };
@@ -29,7 +29,10 @@ export default class PostListItem extends Component {
           {label}
         </span>
         <div className="d-flex justify-content-center align-item-center">
-          <span className="now_date">{date}</span>
+          <span className="now_date">{Date}</span>
+          <button className="btn btn-sm">
+            <i className="fa fa-pencil" />
+          </button>
           <button
             type="button"
             className="btn-star btn-sm"

@@ -12,7 +12,11 @@ const App = () => {
   const data = [
     { label: "Учу React", important: true, id: "ghdf" },
     { label: "Сложно конечно", important: false, id: "kjdf" },
-    { label: "Но я не сдамся!", important: false, id: "dsklf" }
+    { label: "Но я не сдамся!", important: false, id: "dsklf" },
+    1,
+    [1, 2, 3],
+    "assdf",
+    { label: "Не сдамся всё равно!", important: false, id: "dsklfff" }
   ];
 
   return (

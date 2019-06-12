@@ -1,2 +1,2 @@
-import date from "./post-list-item-date";
-export default date;
+import Date from "./post-list-item-date";
+export default Date;
