@@ -13,6 +13,7 @@ const App = () => {
     { label: "Учу React", important: true, id: "ghdf" },
     { label: "Сложно конечно", important: false, id: "kjdf" },
     { label: "Но я не сдамся!", important: false, id: "dsklf" },
+    { label: "", important: false, id: "ddswsklf" },
     1,
     [1, 2, 3],
     "assdf",
