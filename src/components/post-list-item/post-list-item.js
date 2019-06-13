@@ -5,7 +5,7 @@ import "./post-list-item.css";
 import Date from "../post-list-item-date";
 
 export default class PostListItem extends Component {
-  state = { important: false, like: false };
+  state = { ...this.props };
   onImportant = () => {
     this.setState(({ important }) => ({ important: !important }));
   };
@@ -13,8 +13,8 @@ export default class PostListItem extends Component {
     this.setState(({ like }) => ({ like: !like }));
   };
   render() {
-    const { label } = this.props;
-    const { important, like } = this.state;
+    // const { label } = this.props;
+    const { label, important, like } = this.state;
     let classNames = "app-list-item d-flex justify-content-between";
 
     if (important) {

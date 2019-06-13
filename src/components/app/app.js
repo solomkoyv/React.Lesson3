@@ -10,14 +10,19 @@ import "./app.css";
 
 const App = () => {
   const data = [
-    { label: "Учу React", important: true, id: "ghdf" },
+    { label: "Учу React", important: true, id: "ghdf", like: true },
     { label: "Сложно конечно", important: false, id: "kjdf" },
     { label: "Но я не сдамся!", important: false, id: "dsklf" },
-    { label: "", important: false, id: "ddswsklf" },
+    { label: "", important: true, id: "ddswsklf" },
     1,
     [1, 2, 3],
     "assdf",
-    { label: "Не сдамся всё равно!", important: false, id: "dsklfff" }
+    {
+      label: "Не сдамся всё равно!",
+      important: true,
+      id: "dsklfff",
+      like: true
+    }
   ];
 
   return (
