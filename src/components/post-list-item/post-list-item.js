@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import "./post-list-item.css";
+import "./post-list-item.sass";
 
 import Date from "../post-list-item-date";
 
@@ -13,8 +13,8 @@ export default class PostListItem extends Component {
     this.setState(({ like }) => ({ like: !like }));
   };
   render() {
-    // const { label } = this.props;
-    const { label, important, like } = this.state;
+    // const { onDelete } = this.props;
+    const { label, important, like, onDelete } = this.state;
     let classNames = "app-list-item d-flex justify-content-between";
 
     if (important) {
@@ -40,7 +40,7 @@ export default class PostListItem extends Component {
           >
             <i className="fa fa-star" />
           </button>
-          <button type="button" className="btn-trash btn-sm">
+          <button type="button" className="btn-trash btn-sm" onClick={onDelete}>
             <i className="fa fa-trash-o" />
           </button>
           <i className="fa fa-heart" />
