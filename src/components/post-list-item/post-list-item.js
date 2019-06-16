@@ -5,16 +5,16 @@ import "./post-list-item.sass";
 import Date from "../post-list-item-date";
 
 export default class PostListItem extends Component {
-  state = { ...this.props };
-  onImportant = () => {
-    this.setState(({ important }) => ({ important: !important }));
-  };
-  onLike = () => {
-    this.setState(({ like }) => ({ like: !like }));
-  };
   render() {
-    // const { onDelete } = this.props;
-    const { label, important, like, onDelete } = this.state;
+    const {
+      label,
+      important,
+      like,
+      onDelete,
+      onToggleImportant,
+      onToggleLike
+    } = this.props;
+
     let classNames = "app-list-item d-flex justify-content-between";
 
     if (important) {
@@ -25,7 +25,7 @@ export default class PostListItem extends Component {
     }
     return (
       <div className={classNames}>
-        <span className="app-list-item-label" onClick={this.onLike}>
+        <span className="app-list-item-label" onClick={onToggleLike}>
           {label}
         </span>
         <div className="d-flex justify-content-center align-item-center">
@@ -36,7 +36,7 @@ export default class PostListItem extends Component {
           <button
             type="button"
             className="btn-star btn-sm"
-            onClick={this.onImportant}
+            onClick={onToggleImportant}
           >
             <i className="fa fa-star" />
           </button>
