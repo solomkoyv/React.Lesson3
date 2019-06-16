@@ -38,16 +38,6 @@ export default class App extends Component {
 
   maxId = 10;
 
-  fixData = ({ data }) => {
-    const newData = data.filter(item => {
-      if (item.label && item.id) {
-        return item;
-      }
-      return false;
-    });
-    return newData.length;
-  };
-
   deleteItem = id => {
     this.setState(({ data }) => {
       const index = data.findIndex(elem => elem.id === id),
@@ -71,12 +61,12 @@ export default class App extends Component {
     });
   };
 
-  onToggleImportant = id => {
+  onLikeImportant = (id, key) => {
     this.setState(({ data }) => {
       const index = data.findIndex(elem => elem.id === id);
 
       const old = data[index];
-      const newItem = { ...old, important: !old.important };
+      const newItem = { ...old, [key]: !old[key] };
       const newArr = [
         ...data.slice(0, index),
         newItem,
@@ -88,12 +78,12 @@ export default class App extends Component {
     });
   };
 
-  onToggleLike = id => {
+  onToggleEdit = (id, text) => {
     this.setState(({ data }) => {
       const index = data.findIndex(elem => elem.id === id);
 
       const old = data[index];
-      const newItem = { ...old, like: !old.loke };
+      const newItem = { ...old, label: text };
       const newArr = [
         ...data.slice(0, index),
         newItem,
@@ -134,10 +124,10 @@ export default class App extends Component {
   };
 
   render() {
-    const { data, term, filter, fixData } = this.state;
+    const { data, term, filter } = this.state;
 
     const liked = data.filter(item => item.like).length;
-    const allPosts = fixData;
+    const allPosts = data.filter(e => e.label && e.id).length;
 
     const visiblePosts = this.filterPosts(this.searchPost(data, term), filter);
 
@@ -154,8 +144,8 @@ export default class App extends Component {
         <PostList
           posts={visiblePosts}
           onDelete={this.deleteItem}
-          onToggleImportant={this.onToggleImportant}
-          onToggleLike={this.onToggleLike}
+          onLikeImportant={this.onLikeImportant}
+          onToggleEdit={this.onToggleEdit}
         />
         <PostAddForm onAdd={this.addItem} />
       </AppBlock>

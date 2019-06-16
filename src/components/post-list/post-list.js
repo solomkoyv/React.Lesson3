@@ -1,11 +1,10 @@
 import React from "react";
 import { ListGroup } from "reactstrap";
 import "./post-list.css";
-// import styled from "styled-components";
 
 import PostListItem from "../post-list-item";
 
-const PostList = ({ posts, onDelete, onToggleImportant, onToggleLike }) => {
+const PostList = ({ posts, onDelete, onToggleEdit, onLikeImportant }) => {
   const elements = posts.map(item => {
     const { id, ...itemProps } = item;
     if (id && itemProps.label) {
@@ -14,8 +13,9 @@ const PostList = ({ posts, onDelete, onToggleImportant, onToggleLike }) => {
           <PostListItem
             {...itemProps}
             onDelete={() => onDelete(id)}
-            onToggleImportant={() => onToggleImportant(id)}
-            onToggleLike={() => onToggleLike(id)}
+            onToggleImportant={() => onLikeImportant(id, "important")}
+            onToggleLike={() => onLikeImportant(id, "like")}
+            onToggleEdit={text => onToggleEdit(id, text)}
           />
         </li>
       );

@@ -5,6 +5,16 @@ import "./post-list-item.sass";
 import Date from "../post-list-item-date";
 
 export default class PostListItem extends Component {
+  state = {
+    edit: false
+  };
+
+  onToggleEdite = () => {
+    this.setState(({ edit }) => {
+      return { edit: !edit };
+    });
+  };
+
   render() {
     const {
       label,
@@ -12,8 +22,11 @@ export default class PostListItem extends Component {
       like,
       onDelete,
       onToggleImportant,
-      onToggleLike
+      onToggleLike,
+      onToggleEdit
     } = this.props;
+
+    const { edit } = this.state;
 
     let classNames = "app-list-item d-flex justify-content-between";
 
@@ -23,15 +36,32 @@ export default class PostListItem extends Component {
     if (like) {
       classNames += " like";
     }
+    if (edit) {
+      classNames += " activ";
+    }
     return (
       <div className={classNames}>
-        <span className="app-list-item-label" onClick={onToggleLike}>
-          {label}
-        </span>
+        {edit ? (
+          <input
+            type="text"
+            onChange={e => {
+              onToggleEdit(e.target.value);
+            }}
+            defaultValue={label}
+          />
+        ) : (
+          <span className="app-list-item-label" onClick={onToggleLike}>
+            {label}
+          </span>
+        )}
         <div className="d-flex justify-content-center align-item-center">
           <span className="now_date">{Date}</span>
-          <button className="btn btn-sm">
-            <i className="fa fa-pencil" />
+          <button className="btn btn-edit btn-sm" onClick={this.onToggleEdite}>
+            {edit ? (
+              <i className="fa fa-check" />
+            ) : (
+              <i className="fa fa-pencil" />
+            )}
           </button>
           <button
             type="button"
